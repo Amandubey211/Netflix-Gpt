@@ -39,7 +39,7 @@ const Login = () => {
     }, 2000);
 
     if (validationErrMessage) {
-     return  setLoading(false);
+      return setLoading(false);
     }
 
     if (!signIn) {

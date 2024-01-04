@@ -5,10 +5,12 @@ import Header from "./Header";
 const Browse = () => {
   const user = useSelector((store) => store.user);
   return (
-    <div>
-      <Header/>
-      <h1>Welcome {user.email} </h1>
-    </div>
+    <>
+      <Header />
+      <div>
+        <h1>Welcome {user?.email} </h1>
+      </div>
+    </>
   );
 };
 
