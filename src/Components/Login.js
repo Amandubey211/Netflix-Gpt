@@ -1,11 +1,86 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
-// import { Link } from "react-router-dom";
-
+import CheckValidateData from "../Utils/ValidataForm";
+import toast from "react-hot-toast";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../Utils/FireBase";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 const Login = () => {
   const [signIn, SetSignIn] = useState(true);
+  const [errorMessage, SetErrorMessage] = useState(null);
+  const [Loading, setLoading] = useState(false);
+  const email = useRef(null);
+  const password = useRef(null);
+  const userName = useRef(null);
+  const Navigate = useNavigate();
   const ToogleForm = () => {
     SetSignIn(!signIn);
+  };
+  const HandleValidation = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (!email.current.value || !password.current.value) {
+      toast.error("provide the required credentials");
+      setLoading(false);
+      return;
+    }
+    const validationErrMessage = CheckValidateData(
+      email.current?.value,
+      password.current?.value,
+      userName?.current?.value
+    );
+    SetErrorMessage(validationErrMessage);
+    setTimeout(() => {
+      SetErrorMessage(null);
+    }, 2000);
+
+    if (validationErrMessage) {
+     return  setLoading(false);
+    }
+
+    if (!signIn) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          toast.success(`user has been successfully signedUp`);
+          setLoading(false);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          toast.error(errorCode);
+          setLoading(false);
+          Navigate("/browse");
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          toast.success("User signIn successfully");
+          setLoading(false);
+          Navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          toast.error(errorCode);
+          console.log(errorMessage);
+          setLoading(false);
+        });
+    }
   };
   return (
     <>
@@ -25,28 +100,34 @@ const Login = () => {
         </div>
         {!signIn && (
           <input
+            ref={userName}
             type="text"
-            placeholder="Enter FullName"
+            placeholder=" FullName"
             className="p-3  rounded-md my-2 w-full text-white bg-gray-700"
           />
         )}
 
         <input
           type="text"
+          ref={email}
           placeholder="Email Address"
           className="p-3  rounded-md my-2 w-full text-white bg-gray-700"
         />
         <input
+          ref={password}
           type="text"
           placeholder="Enter Password"
           className="p-3 my-2 rounded-md w-full text-white bg-gray-700"
         />
-
+        <div className="flex justify-start">
+          <p className="text-red-500 font-semibold"> {errorMessage}</p>
+        </div>
         <button
           type="submit"
           className="p-4 rounded-md px-10 w-full mt-6 mb-3  bg-red-500"
+          onClick={HandleValidation}
         >
-          {signIn ? "Sign In" : "Sign Up"}
+          {Loading ? <Spinner /> : <> {signIn ? "Sign In" : "Sign Up"}</>}
         </button>
         <div className="flex justify-between px-2  mb-12 ">
           <div className="flex items-center  cursor-pointer select-none gap-1 ">
@@ -61,7 +142,6 @@ const Login = () => {
             </label>
           </div>
           <div className="flex hover:underline cursor-pointer">
-            {/* <Link></Link> */}
             <span>Need help?</span>
           </div>
         </div>

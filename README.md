@@ -2,6 +2,13 @@
 
 - create-react-app
   -configure TailwindCss
+  -header 
+  -loginform 
+  -routing
+  -signup/signIn
+  -form Validation
+  -useRef
+  -firebase deployment
 
 # Features
 
