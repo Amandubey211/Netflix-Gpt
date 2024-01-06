@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../Images/NetFlexLogo.png";
 import toast, { Toaster } from "react-hot-toast";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/FireBase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+
+import { AddUser, RemoveUser } from "../Utils/Redux/Slices/UserSlice";
+import HeaderAvatar from "./HeaderAvatar";
+
 const Header = () => {
+  const dispatch = useDispatch();
+
   const Navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+  useEffect(() => {
+    const Unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, displayName, email, photoURL } = user;
+        dispatch(
+          AddUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        Navigate("/browse");
+      } else {
+        dispatch(RemoveUser());
+        Navigate("/");
+      }
+    });
+    return () => Unsubscribe();
+  }, []);
   const HandleSignOut = () => {
     signOut(auth)
       .then(() => {
+        toast.error("Logged Out successfully");
+        dispatch(RemoveUser());
+
         Navigate("/");
       })
       .catch((error) => {
@@ -18,16 +50,11 @@ const Header = () => {
   };
   return (
     <>
-      <div className="w-screen z-10 absolute px-6 bg-gradient-to-b from-black py-2 flex justify-between ">
+      <div className="w-screen z-10 absolute px-6 bg-gradient-to-b from-black py-2 flex justify-between  ">
         <img className="w-40" src={logo} alt="logo" />
-        <div>
-          <button
-            className="bg-red-500 p-2 rounded-md px-5"
-            onClick={HandleSignOut}
-          >
-            Sign Out
-          </button>
-        </div>
+        {user && (
+          <HeaderAvatar displayName={user?.displayName} photoURL={user?.photoURL} HandleSignOut={HandleSignOut} />
+        )}
       </div>
       <Toaster />
     </>

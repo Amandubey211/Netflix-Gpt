@@ -3,12 +3,16 @@ import Header from "./Header";
 import CheckValidateData from "../Utils/ValidataForm";
 import toast from "react-hot-toast";
 import {
+  updateProfile,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../Utils/FireBase";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { AddUser } from "../Utils/Redux/Slices/UserSlice";
+import { loginBackground, UserAvatar } from "../Utils/Constant";
 const Login = () => {
   const [signIn, SetSignIn] = useState(true);
   const [errorMessage, SetErrorMessage] = useState(null);
@@ -17,9 +21,11 @@ const Login = () => {
   const password = useRef(null);
   const userName = useRef(null);
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
   const ToogleForm = () => {
     SetSignIn(!signIn);
   };
+
   const HandleValidation = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -49,17 +55,32 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
-          toast.success(`user has been successfully signedUp`);
-          setLoading(false);
+          updateProfile(user, {
+            displayName: userName?.current?.value,
+            photoURL: UserAvatar,
+          })
+            .then(() => {
+              const { uid, displayName, email, photoURL } = auth.currentUser;
+              dispatch(
+                AddUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+              toast.success(`Something went wrong`);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
           toast.error(errorCode);
           setLoading(false);
-          Navigate("/browse");
         });
     } else {
       signInWithEmailAndPassword(
@@ -71,13 +92,11 @@ const Login = () => {
           const user = userCredential.user;
           toast.success("User signIn successfully");
           setLoading(false);
-          Navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           toast.error(errorCode);
-          console.log(errorMessage);
           setLoading(false);
         });
     }
@@ -86,10 +105,7 @@ const Login = () => {
     <>
       <Header />
       <div className="absolute bg-gradient-to-b from-black">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="backgroundImage"
-        />
+        <img src={loginBackground} alt="backgroundImage" />
       </div>
 
       <form className=" w-5/12 rounded-lg bg-opacity-80 bg-black text-white absolute px-10 py-6 my-16 mx-auto right-0 left-0">
@@ -130,10 +146,10 @@ const Login = () => {
           {Loading ? <Spinner /> : <> {signIn ? "Sign In" : "Sign Up"}</>}
         </button>
         <div className="flex justify-between px-2  mb-12 ">
-          <div className="flex items-center  cursor-pointer select-none gap-1 ">
+          <div className="flex align-middle  cursor-pointer select-none gap-1 ">
             <input
               type="checkbox"
-              className=" p-1  border-red-500"
+              className=" w-5  border-red-500"
               id="remember"
               name="remember me"
             />{" "}
@@ -147,12 +163,12 @@ const Login = () => {
         </div>
 
         {signIn ? (
-          <div className="flex gap-2 my-3">
+          <div className="flex gap-1 align-middle my-3">
             <p className="text-gray-600">New to Netflix?</p>
             <span
               onClick={ToogleForm}
               href="/"
-              className=" hover:underline cursor-pointer font-semibold"
+              className=" hover:underline text-1xl hover:text-blue-500 cursor-pointer font-semibold"
             >
               Sign Up
             </span>
@@ -163,7 +179,7 @@ const Login = () => {
             <span
               onClick={ToogleForm}
               href="/"
-              className=" hover:underline cursor-pointer font-semibold"
+              className=" hover:underline  hover:text-blue-500   cursor-pointer font-semibold"
             >
               Sign In
             </span>

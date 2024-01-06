@@ -1,15 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Header from "./Header";
+import useNowPlaying from "../CustomHooks/useNowPlaying";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+
   const user = useSelector((store) => store.user);
+  useNowPlaying();
+
   return (
     <>
       <Header />
-      <div>
-        <h1>Welcome {user?.email} </h1>
-      </div>
+      <MainContainer />
+      <SecondaryContainer />
     </>
   );
 };

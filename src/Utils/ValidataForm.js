@@ -4,7 +4,7 @@ const CheckValidateData = (email, password, userName) => {
   );
   const isPasswordValid =
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
-  const isUserNamevalid = /^[A-Za-z][A-Za-z0-9_]{7,29}$/.test(userName);
+  const isUserNamevalid = /^[A-Za-z][A-Za-z0-9_]{4,25}$/.test(userName);
 
   if (!isEmailValid) return "Email Is Not Valid";
   if (!isPasswordValid)

@@ -9,6 +9,10 @@
   -form Validation
   -useRef
   -firebase deployment
+  -redux integration 
+  - integrated tmdb
+  -stored and fetched the data 
+  
 
 # Features
 
