@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <>
       <div className="w-screen z-10 absolute px-6 bg-gradient-to-b from-black py-2 flex justify-between  ">
-        <img className="w-40" src={logo} alt="logo" />
+        <img className="w-32" src={logo} alt="logo" />
         {user && (
           <HeaderAvatar displayName={user?.displayName} photoURL={user?.photoURL} HandleSignOut={HandleSignOut} />
         )}

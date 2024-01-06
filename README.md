@@ -11,7 +11,8 @@
   -firebase deployment
   -redux integration 
   - integrated tmdb
-  -stored and fetched the data 
+  -stored in the store  and fetched the data  from the redux-store
+  -lots of custom hooks 
   
 
 # Features
