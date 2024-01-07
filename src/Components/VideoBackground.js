@@ -10,18 +10,16 @@ const VideoBackground = ({ movieId }) => {
   const Trailer = filteredVideo?.length
     ? filteredVideo[0]
     : videos?.length
-      ? videos[0]
-      : null;
+    ? videos[0]
+    : null;
 
   return (
     <div>
       <iframe
         className="w-screen aspect-video"
-
-        // src={`https://www.youtube.com/embed/${Trailer?.key}?&autoplay=1&mute=1&&playlist=${Trailer?.key}`}
-        src={`https://www.youtube.com/embed/${Trailer?.key}`}
+        src={`https://www.youtube.com/embed/${Trailer?.key}?&autoplay=1&mute=1&&playlist=${Trailer?.key}`}
+        // src={`https://www.youtube.com/embed/${Trailer?.key}`}
         title="YouTube video player"
-
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>

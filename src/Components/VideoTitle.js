@@ -5,10 +5,15 @@ import { IoStarSharp } from "react-icons/io5";
 const VideoTitle = ({ title, overview, releasedate, votes }) => {
   return (
     <>
-      <div className="pt-[15%] w-screen aspect-video absolute ps-16 flex flex-col items-start justify-start text-white bg-gradient-to-r from-black">
+      <div className="pt-[12%] w-screen aspect-video absolute ps-16 flex flex-col items-start gap-1 justify-start text-white bg-gradient-to-r from-black">
         <h3 className="text-5xl font-semibold">{title}</h3>
-        <p className="py-2 w-1/2">{overview}</p>
-        <div className="flex gap-5 px-2 py-2   ">
+        <div className=" titleScroll w-1/3 max-h-36 py-4  overflow-y-auto  ">
+
+          <p>
+            {overview}
+          </p>
+        </div>
+        <div className="flex gap-5  py-2   ">
           <span className="flex items-center gap-1 bg-red-600 rounded-sm  justify-end px-3">
             {" "}
             <span> {(votes).toFixed(1)} </span>
@@ -21,7 +26,7 @@ const VideoTitle = ({ title, overview, releasedate, votes }) => {
           <button className="bg-white hover:bg-opacity-20  rounded-md p-3 m-1 px-10  border-2 text-black  ">
             <span className="flex justify-center gap-2 items-center">
               <FaPlay className="text-3xl " />
-              <span>play </span>
+              <span>Play </span>
             </span>
           </button>
           <button className="p-3 m-1 px-10 border-2 rounded-md   ">

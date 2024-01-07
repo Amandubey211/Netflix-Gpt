@@ -5,8 +5,6 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/FireBase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-
 import { AddUser, RemoveUser } from "../Utils/Redux/Slices/UserSlice";
 import HeaderAvatar from "./HeaderAvatar";
 
@@ -38,7 +36,7 @@ const Header = () => {
   const HandleSignOut = () => {
     signOut(auth)
       .then(() => {
-        toast.error("Logged Out successfully");
+        toast.success("Logged Out successfully");
         dispatch(RemoveUser());
 
         Navigate("/");
@@ -52,9 +50,16 @@ const Header = () => {
     <>
       <div className="w-screen z-10 absolute px-6 bg-gradient-to-b from-black py-2 flex justify-between  ">
         <img className="w-32" src={logo} alt="logo" />
-        {user && (
-          <HeaderAvatar displayName={user?.displayName} photoURL={user?.photoURL} HandleSignOut={HandleSignOut} />
-        )}
+        <div className="hover:bg-red-500 p-0.5 rounded-full">
+          {user && (
+            <HeaderAvatar
+              email={user?.email}
+              displayName={user?.displayName}
+              photoURL={user?.photoURL}
+              HandleSignOut={HandleSignOut}
+            />
+          )}
+        </div>
       </div>
       <Toaster />
     </>

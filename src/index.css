@@ -5,3 +5,6 @@
 .movieLists::-webkit-scrollbar {
   display: none;
 }
+.titleScroll::-webkit-scrollbar {
+  display: none;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Popover,
   PopoverTrigger,
@@ -9,7 +9,7 @@ import {
   PopoverCloseButton,
   Avatar,
 } from "@chakra-ui/react";
-const HeaderAvatar = ({ displayName, photoURL, HandleSignOut }) => {
+const HeaderAvatar = ({ displayName, email, photoURL, HandleSignOut }) => {
   return (
     <div>
       <Popover isLazy placement="left-start">
@@ -25,10 +25,18 @@ const HeaderAvatar = ({ displayName, photoURL, HandleSignOut }) => {
         <PopoverContent>
           <PopoverArrow />
           <PopoverCloseButton />
-          <PopoverHeader>{displayName}</PopoverHeader>
+          <PopoverHeader>
+            <div className="flex flex-col ">
+              {" "}
+              <b>{displayName}</b>
+              <span>{email}</span>
+            </div>
+          </PopoverHeader>
           <PopoverBody>
             <button
-              onClick={() => { HandleSignOut() }}
+              onClick={() => {
+                HandleSignOut();
+              }}
               className="bg-red-600 rounded-sm p-1  px-3 "
             >
               {" "}
@@ -38,7 +46,7 @@ const HeaderAvatar = ({ displayName, photoURL, HandleSignOut }) => {
         </PopoverContent>
       </Popover>
     </div>
-  )
-}
+  );
+};
 
-export default HeaderAvatar
+export default HeaderAvatar;
