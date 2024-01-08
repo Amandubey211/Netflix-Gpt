@@ -8,8 +8,7 @@ export const ApiOptions = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMDQzYmUwMzI1ZDU4NjdkMzMyYTQyYmVlZjJmNjJjYSIsInN1YiI6IjY1OTdlNDIwNjBjNTFkMDNiMDk3ODdjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Lixyrf_3X3lV7VP-qAJQllYJ7g5X03Cg4haCqdymz38",
+    Authorization: `Bearer ${process.env.REACT_APP_TMDB_KEY}`,
   },
 };
 
@@ -27,3 +26,4 @@ export const TopRatedMoviesCdnUrl =
 export const UpComingMoviesCdnUrl =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
+export const OPEN_AI_GPT_KEY = process.env.REACT_APP_OPEN_AI_GPT_KEY;

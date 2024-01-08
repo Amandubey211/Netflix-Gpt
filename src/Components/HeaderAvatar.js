@@ -12,7 +12,7 @@ import {
 const HeaderAvatar = ({ displayName, email, photoURL, HandleSignOut }) => {
   return (
     <div>
-      <Popover isLazy placement="left-start">
+      <Popover  placement="left-end">
         <PopoverTrigger>
           <div className="cursor-pointer rounded-full shadow-2xl ">
             <Avatar
