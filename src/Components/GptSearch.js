@@ -5,9 +5,9 @@ import { loginBackground } from "../Utils/Constant";
 
 const GptSearch = () => {
   return (
-    <div>
-      <div className="absolute w-screen bg-black -z-10">
-        <img src={loginBackground} alt="Background" className="w-screen" />
+    <div className="">
+      <div className="absolute w-screen -z-10">
+        <img src={loginBackground} alt="Background" className="w-screen opacity-95" />
       </div>
       <div className="pt-24 flex justify-center items-center ">
         <GptSearchBar />

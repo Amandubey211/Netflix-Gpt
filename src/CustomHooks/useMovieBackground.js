@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { ApiOptions } from "../Utils/Constant";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { AddMovieVideos } from "../Utils/Redux/Slices/movieVideosSlice";
 
 const useMovieBackground = (movieId) => {
+  // const videoBackground = useSelector((store)=>)
   const dispatch = useDispatch()
   const GetMovieBackgroundVideo = async () => {
     const res = await fetch(

@@ -59,26 +59,24 @@ const Header = () => {
           <Link to="/browse">
             <img className="w-32" src={logo} alt="logo" />
           </Link>
-          {/* <div className="flex gap-5 items-center text-red-600">
-            <span>Tv-series</span>
-            <span>Web-series</span>
-          </div> */}
+
         </div>
-        <div className=" flex items-center bg-red-500 bg-opacity-20 px-2 rounded-md  gap-2 ">
+        <div className=" flex items-center bg-purple-400 bg-opacity-20 px-2 rounded-md  gap-2 ">
           <button
+            id="GptBtn"
             onClick={HandleGptSearchBtn}
-            className="bg-red-500 py-2 border- px-6 font-semibold  rounded-[3px]"
+            className=" py-2 border- px-6 font-semibold  rounded-[3px]"
           >
             {GptState ? (
-              "Movies"
+              "Go back"
             ) : (
               <section className="flex gap-2 items-center">
-                <FaRobot className="text-2xl from-red-500" />{" "}
-                <span>Gpt Service</span>{" "}
+                <FaRobot className="text-2xl from-red-500 animate-bounce " />{" "}
+                <span className="animate-bounce">Gpt Service</span>{" "}
               </section>
             )}
           </button>
-          <div className="hover:bg-red-500 p-0.5 rounded-full">
+          <div className="hover:bg-purple-500 p-0.5 rounded-full">
             {user && (
               <HeaderAvatar
                 email={user?.email}

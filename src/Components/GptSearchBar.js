@@ -16,7 +16,7 @@ const GptSearchBar = () => {
           HandleGptSearch(SearchText?.current?.value);
         }}
       >
-        <fieldset className="flex gap-2 mb-5 ">
+        <fieldset className="flex gap-1 mb-5 ">
           <input
             ref={SearchText}
             type="text"
@@ -25,13 +25,13 @@ const GptSearchBar = () => {
           />
           <button
             type="submit"
-            className="bg-red-500 pt-1 px-5 rounded-md"
+            className="bg-red-500 opacity-90 outline-none focus:outline-none hover:opacity-100 px-5 rounded-md"
             onClick={(e) => {
               e.preventDefault();
               HandleGptSearch(SearchText?.current?.value);
             }}
           >
-            {loading ? <Spinner /> : <span>Search</span>}
+            {loading ? <Spinner /> : <span className="font-bold">Search</span>}
           </button>
         </fieldset>
       </form>

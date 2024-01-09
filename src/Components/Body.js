@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Login from "./Login";
 import Browse from "./Browse";
+import MovieInfo from "./MovieInfo";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -14,10 +15,14 @@ const Body = () => {
       path: "/browse",
       element: <Browse />,
     },
+    {
+      path: "/movieinfo",
+      element: <MovieInfo />,
+    },
   ]);
   return (
     <div>
-      <RouterProvider router={appRouter}></RouterProvider>
+      <RouterProvider router={appRouter}/>
     </div>
   );
 };

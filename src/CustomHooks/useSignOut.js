@@ -5,20 +5,20 @@ import { signOut } from "firebase/auth";
 import { auth } from "../Utils/FireBase";
 
 const useSignOut = () => {
-    const dispatch = useDispatch();
-    return HandleSignOut = () => {
-        signOut(auth)
-            .then(() => {
-                toast.error("Logged Out successfully");
-                dispatch(RemoveUser());
+  const dispatch = useDispatch();
+  return (HandleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        toast.error("Logged Out successfully");
+        dispatch(RemoveUser());
 
-                Navigate("/");
-            })
-            .catch((error) => {
-                toast.error("something went wrong");
-                console.log(error);
-            });
-    };
-}
+        Navigate("/");
+      })
+      .catch((error) => {
+        toast.error("something went wrong");
+        console.log(error);
+      });
+  });
+};
 
-export default useSignOut
+export default useSignOut;
