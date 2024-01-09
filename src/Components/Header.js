@@ -59,34 +59,34 @@ const Header = () => {
           <Link to="/browse">
             <img className="w-32" src={logo} alt="logo" />
           </Link>
-
         </div>
-        <div className=" flex items-center bg-purple-400 bg-opacity-20 px-2 rounded-md  gap-2 ">
-          <button
-            id="GptBtn"
-            onClick={HandleGptSearchBtn}
-            className=" py-2 border- px-6 font-semibold  rounded-[3px]"
-          >
-            {GptState ? (
-              "Go back"
-            ) : (
-              <section className="flex gap-2 items-center">
-                <FaRobot className="text-2xl from-red-500 animate-bounce " />{" "}
-                <span className="animate-bounce">Gpt Service</span>{" "}
-              </section>
-            )}
-          </button>
-          <div className="hover:bg-purple-500 p-0.5 rounded-full">
-            {user && (
+
+        {user && (
+          <div className=" flex items-center bg-purple-400 bg-opacity-20 px-2 rounded-md   ">
+            <div className="hover:bg-purple-500 z-50 p-0.5 rounded-full">
               <HeaderAvatar
                 email={user?.email}
                 displayName={user?.displayName}
                 photoURL={user?.photoURL}
                 HandleSignOut={HandleSignOut}
               />
-            )}
+            </div>
+            <button
+              id="GptBtn"
+              onClick={HandleGptSearchBtn}
+              className=" py-2 -ms-4  px-6 font-semibold  rounded-[3px]"
+            >
+              {GptState ? (
+                "Browse Page"
+              ) : (
+                <section className="flex gap-2 items-center animate-bounce hover:animate-none ">
+                  <FaRobot className="text-2xl from-red-500  " />{" "}
+                  <span className="">Gpt Service</span>{" "}
+                </section>
+              )}
+            </button>
           </div>
-        </div>
+        )}
       </div>
       <Toaster />
     </>

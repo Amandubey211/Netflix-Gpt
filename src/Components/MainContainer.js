@@ -22,16 +22,18 @@ const MainContainer = () => {
       {clickedMovie ? (
         <>
           <VideoTitle
+             movie={clickedMovie}
             title={clickedMovie?.original_title}
             overview={clickedMovie?.overview}
             releasedate={clickedMovie?.release_date}
             votes={clickedMovie?.vote_average}
           />
-          <VideoBackground movieId={clickedMovie.id} />{" "}
+          <VideoBackground movieId={clickedMovie.id}  />{" "}
         </>
       ) : (
         <>
           <VideoTitle
+               movie={mainMovie}
             title={original_title}
             overview={overview}
             releasedate={release_date}

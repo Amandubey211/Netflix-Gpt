@@ -16,7 +16,7 @@ const HeaderAvatar = ({ displayName, email, photoURL, HandleSignOut }) => {
         <PopoverTrigger>
           <div className="cursor-pointer rounded-full shadow-2xl ">
             <Avatar
-              size="md"
+              size="lg"
               name={displayName ? displayName : "User"}
               src={photoURL}
             />

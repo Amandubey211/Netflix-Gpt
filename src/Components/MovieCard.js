@@ -15,7 +15,6 @@ const MovieCard = ({ movie }) => {
     );
 
     const data = await res.json();
-    console.log(data);
     dispatch(addClickedMovies(data));
   };
   const GetMovieBackgroundVideo = async () => {

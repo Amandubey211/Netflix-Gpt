@@ -8,10 +8,19 @@
 .titleScroll::-webkit-scrollbar {
   display: none;
 }
-
+.movieClips::-webkit-scrollbar {
+  display: none;
+}
+.movieClips {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
 .movieCard {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.companyLogo{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #GptBtn {
@@ -19,6 +28,8 @@
   --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
   --btn-color: rgb(100, 61, 136);
+
+  
   border: 0.1em solid var(--glow-color);
   padding: 0.5em 1.5em;
   color: black;

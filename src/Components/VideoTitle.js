@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { LuInfo } from "react-icons/lu";
-import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import { IoStarSharp } from "react-icons/io5";
-const VideoTitle = ({ title, overview, releasedate, votes }) => {
+import MyModal from "./Modal";
+const VideoTitle = ({ title, overview, releasedate, votes,movie }) => {
   const movieOverviewRef = useRef(null);
-  const Navigate = useNavigate();
   useEffect(() => {
     movieOverviewRef?.current?.scrollIntoView({
       behavior: "smooth",
@@ -35,15 +33,8 @@ const VideoTitle = ({ title, overview, releasedate, votes }) => {
               <span>Play </span>
             </span>
           </button>
-          <button
-            className="p-3  px-7 border-2 rounded-md   "
-            onClick={() => Navigate("/movieinfo")}
-          >
-            <span className="flex justify-center gap-2 items-center">
-              <LuInfo className="text-3xl " />
-              <span>More Info </span>
-            </span>
-          </button>
+          <MyModal  title={title} movie={movie}releasedate={releasedate}/>
+
         </div>
       </div>
     </>

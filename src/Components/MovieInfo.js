@@ -1,14 +1,16 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import MovieInfoLeft from "./MovieInfoLeft";
+import MovieInfoRight from "./MovieInfoRight";
 
-const MovieInfo = ({movie}) => {
+const MovieInfo = ({ movie }) => {
   return (
-    <div>
-        <Header/>
-        <h1>movie info page</h1>
-      
+    <div className="flex flex-col">
+      <div className=" flex justify-between  flex-wrap md:flex-nowrap gap-2  ">
+        <MovieInfoLeft movie={movie} />
+        <MovieInfoRight movie={movie} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default MovieInfo
+export default MovieInfo;
