@@ -15,15 +15,12 @@ const GptSearchSuggesstons = () => {
     <>
       {loading ? (
         <div className="flex justify-center  mb-10 items-center">
-          <div className="flex flex-col bg-black rounded-2xl  justify-center items-center   ">
+          <div className="flex flex-col bg-slate-600 rounded-2xl  justify-center items-center   ">
             <img
               src={botLoaing}
-              className="bg-black md:w-44 w-32 bg-opacity-80 rounded-xl"
+              className="bg-red-600 md:w-44 w-32 bg-opacity-80 rounded-xl"
               alt="loading animation"
             />
-            <span className="md:text-white py-2 md:text-4xl text-xl text-black">
-              Loading
-            </span>
           </div>
         </div>
       ) : (

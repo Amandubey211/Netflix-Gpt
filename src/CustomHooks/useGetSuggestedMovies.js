@@ -11,12 +11,18 @@ import { toggleLoadingGptSearch } from "../Utils/Redux/Slices/GptSlice";
 const useGetSuggestedMovies = () => {
   const dispatch = useDispatch();
   const FetchSuggestedMovies = async (movie) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`,
-      ApiOptions
-    );
-    const data = await res.json();
-    return data;
+    try {
+      dispatch(toggleLoadingGptSearch(true));
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`,
+        ApiOptions
+      );
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      dispatch(toggleLoadingGptSearch(false));
+      toast.error(error.message);
+    }
   };
 
   const HandleGptSearch = async (SearchText) => {

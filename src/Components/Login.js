@@ -104,8 +104,12 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="absolute bg-gradient-to-b from-black">
-        <img src={loginBackground} alt="backgroundImage" />
+      <div className="absolute">
+        <img
+          className=" md:w-screen h-screen object-cover"
+          src={loginBackground}
+          alt="backgroundImage"
+        />
       </div>
 
       <form className=" md:w-5/12 w-[80%] rounded-lg bg-opacity-80 bg-black text-white absolute md:px-10 px-5 md:py-6 py-3 md:my-16 my-10 mx-auto right-0 left-0">

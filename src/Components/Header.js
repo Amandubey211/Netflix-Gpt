@@ -45,7 +45,7 @@ const Header = () => {
       })
       .catch((error) => {
         toast.error("something went wrong");
-   
+        console.log(error);
       });
   };
 

@@ -3,17 +3,24 @@ const GptMoviesSlice = createSlice({
   name: "GptMovies",
   initialState: {
     suggestedMovies: null,
-    suggestedNames:null
+    suggestedNames: null,
   },
   reducers: {
     addGptSuggestedMovies: (state, action) => {
       state.suggestedMovies = action.payload;
     },
-    addGptSuggestedNames:(state,action)=>{
-        state.suggestedNames = action.payload
-    }
+    addGptSuggestedNames: (state, action) => {
+      state.suggestedNames = action.payload;
+    },
+    // removeGptSuggestedMovies: (state, action) => {
+    //   state.suggestedMovies.length = 0;
+    // },
   },
 });
-export const { addGptSuggestedMovies,addGptSuggestedNames } = GptMoviesSlice.actions;
+export const {
+  addGptSuggestedMovies,
+  addGptSuggestedNames,
+  // removeGptSuggestedMovies,
+} = GptMoviesSlice.actions;
 
 export default GptMoviesSlice.reducer;
