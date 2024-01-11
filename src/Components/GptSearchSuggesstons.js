@@ -13,7 +13,7 @@ const GptSearchSuggesstons = () => {
 
   return (
     <>
-      {!loading ? (
+      {loading ? (
         <div className="flex justify-center  mb-10 items-center">
           <div className="flex flex-col bg-black rounded-2xl  justify-center items-center   ">
             <img
