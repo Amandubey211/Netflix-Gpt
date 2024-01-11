@@ -17,7 +17,7 @@ const Browse = () => {
   useUpComingMovies();
 
   return (
-    <>
+    <div className="">
       <Header />
       {GptState ? (
         <GptSearch />
@@ -27,7 +27,7 @@ const Browse = () => {
           <SecondaryContainer />
         </>
       )}
-    </>
+    </div>
   );
 };
 

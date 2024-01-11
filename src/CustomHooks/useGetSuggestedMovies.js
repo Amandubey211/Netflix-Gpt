@@ -45,6 +45,8 @@ const useGetSuggestedMovies = () => {
         dispatch(toggleLoadingGptSearch(false));
         toast.error(error.message);
       }
+    } else {
+      toast.error("please provide some words");
     }
   };
 

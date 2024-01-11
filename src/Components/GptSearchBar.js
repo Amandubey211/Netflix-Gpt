@@ -20,18 +20,22 @@ const GptSearchBar = () => {
           <input
             ref={SearchText}
             type="text"
-            className="w-96 pe-5 border-[1px]  shadow-[rgba(38,57,77,1.000)_0px_20px_30px_-10px] ps-3 py-2  rounded-md"
+            className="md:w-96 w-60 pe-5 border-[1px]  shadow-[rgba(38,57,77,1.000)_0px_20px_30px_-10px] ps-3 py-2  rounded-md"
             placeholder="Enter your thoughts.."
           />
           <button
             type="submit"
-            className="bg-red-500 opacity-90 outline-none focus:outline-none hover:opacity-100 px-5 rounded-md"
+            className="bg-red-500 opacity-90 outline-none focus:outline-none hover:opacity-100 md:px-5 px-3 rounded-md"
             onClick={(e) => {
               e.preventDefault();
               HandleGptSearch(SearchText?.current?.value);
             }}
           >
-            {loading ? <Spinner /> : <span className="font-bold">Search</span>}
+            {loading ? (
+              <Spinner />
+            ) : (
+              <span className="md:font-bold font-semibold">Search</span>
+            )}
           </button>
         </fieldset>
       </form>

@@ -30,7 +30,7 @@ const MovieCard = ({ movie }) => {
     <div className="">
       {!movie.poster_path ? null : (
         <div
-          className="w-32  rounded-md movieCard transition ease-in-out delay-50 hover:scale-125  hover:z-50 hover:cursor-pointer"
+          className=" md:w-32 w-24  rounded-md movieCard transition ease-in-out delay-50 hover:scale-125  hover:z-50 hover:cursor-pointer"
           onClick={() => {
             FetchClickedMovie();
             GetMovieBackgroundVideo();

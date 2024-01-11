@@ -108,9 +108,9 @@ const Login = () => {
         <img src={loginBackground} alt="backgroundImage" />
       </div>
 
-      <form className=" w-5/12 rounded-lg bg-opacity-80 bg-black text-white absolute px-10 py-6 my-16 mx-auto right-0 left-0">
+      <form className=" md:w-5/12 w-[80%] rounded-lg bg-opacity-80 bg-black text-white absolute md:px-10 px-5 md:py-6 py-3 md:my-16 my-10 mx-auto right-0 left-0">
         <div className="flex justify-start my-1">
-          <h1 className="text-3xl py-3  font-bold ">
+          <h1 className="md:text-3xl text-xl md:py-3 py-1  md:font-bold  font-semibold">
             {signIn ? "Sign In" : "Sign Up"}
           </h1>
         </div>
@@ -118,8 +118,8 @@ const Login = () => {
           <input
             ref={userName}
             type="text"
-            placeholder=" FullName"
-            className="p-3  rounded-md my-2 w-full text-white bg-gray-700"
+            placeholder="UserName"
+            className="md:p-3  p-2  rounded-md md:my-2  my-1 w-full text-white bg-gray-700"
           />
         )}
 
@@ -127,29 +127,30 @@ const Login = () => {
           type="text"
           ref={email}
           placeholder="Email Address"
-          className="p-3  rounded-md my-2 w-full text-white bg-gray-700"
+          className="md:p-3  p-2  rounded-md md:my-2  my-1 w-full text-white bg-gray-700"
         />
         <input
           ref={password}
           type="text"
           placeholder="Enter Password"
-          className="p-3 my-2 rounded-md w-full text-white bg-gray-700"
+          className="md:p-3  p-2  rounded-md md:my-2  my-1 w-full text-white bg-gray-700"
         />
+
         <div className="flex justify-start">
           <p className="text-red-500 font-semibold"> {errorMessage}</p>
         </div>
         <button
           type="submit"
-          className="p-4 rounded-md px-10 w-full mt-6 mb-3  bg-red-500"
+          className="md:p-4  p-3 rounded-md px-10 w-full mt-6 mb-3  bg-red-500"
           onClick={HandleValidation}
         >
           {Loading ? <Spinner /> : <> {signIn ? "Sign In" : "Sign Up"}</>}
         </button>
-        <div className="flex justify-between px-2  mb-12 ">
+        <div className="flex justify-between px-2  md:mb-12 mb-8 ">
           <div className="flex align-middle  cursor-pointer select-none gap-1 ">
             <input
               type="checkbox"
-              className=" w-5  border-red-500"
+              className=" md:w-5 w-4  border-red-500"
               id="remember"
               name="remember me"
             />{" "}
@@ -163,7 +164,7 @@ const Login = () => {
         </div>
 
         {signIn ? (
-          <div className="flex gap-1 align-middle my-3">
+          <div className="flex gap-1 align-middle md:my-3 my-2">
             <p className="text-gray-600">New to Netflix?</p>
             <span
               onClick={ToogleForm}

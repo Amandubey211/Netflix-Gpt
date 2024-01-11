@@ -13,9 +13,9 @@ const MovieInfoLeft = ({ movie }) => {
   } = movie;
   console.log(production_countries);
   return (
-    <div className="flex flex-col bg-red-100 rounded-2xl  p-3 gap-1     ">
-      <div className="trailer rounded-md  ">
-        <VideoBackground movieId={id} width="md:w-[30rem] w-76  rounded-lg" />
+    <div className="flex flex-col bg-red-100 rounded-2xl  md:p-3 p-2 gap-1     ">
+      <div className="trailer rounded-md    ">
+        <VideoBackground movieId={id} width="md:w-[30rem] w-86  rounded-lg" />
       </div>
       <div className="font-bold">Trailer</div>
       <div className="genere py-2 rounded-lg flex  gap-3 items-center justify-star  bg-opacity-40">
@@ -44,13 +44,13 @@ const MovieInfoLeft = ({ movie }) => {
       </div>
       <div className="p-3 mt-3 bg-red-300 rounded-lg">
         <div className="flex flex-col gap-1 ">
-          <b className="text-1xl">Produced by : </b>
+          <b className="text-1xl">Produced by </b>
           <div className="flex justify-start items-center gap-2 flex-wrap">
-            {production_companies?.map((company) => {
+            {production_companies.slice(0, 3)?.map((company) => {
               return (
                 <div key={company.id}>
                   {company.logo_path && (
-                    <div className="flex flex-col companyLogo items-center justify-center gap-2  p-2  rounded-lg      w-24 h-24 ">
+                    <div className="flex flex-col companyLogo items-center justify-center gap-2  p-1  rounded-lg    w-16 h-16   md:w-24 md:h-24 ">
                       <img
                         src={`https://image.tmdb.org/t/p/w500${company?.logo_path}`}
                         alt={company.id}

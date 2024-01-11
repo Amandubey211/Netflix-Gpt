@@ -16,9 +16,9 @@ function MyModal({ title, movie, releasedate }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <button className="p-3  px-7 border-2 rounded-md    " onClick={onOpen}>
+      <button className="md:p-3 p-1  md:px-7 px-3 border-2 rounded-md    " onClick={onOpen}>
         <span className="flex justify-center gap-2 items-center">
-          <LuInfo className="text-3xl " />
+          <LuInfo className="md:text-3xl text-xl " />
           <span>More Info </span>
         </span>
       </button>
@@ -29,14 +29,13 @@ function MyModal({ title, movie, releasedate }) {
           <ModalHeader>
             <div className="flex justify-between  gap-4 items-start">
               <b className="text-xs sm:text-2xl">{title}</b>{" "}
-              {/* <span className="bg-red-500 text-xs sm:text-lg  rounded-md p-1 px-3">
-                {releasedate}
-              </span> */}
             </div>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <MovieInfo movie={movie} />
+            <div className="">
+              <MovieInfo movie={movie} />
+            </div>
           </ModalBody>
 
           <ModalFooter>

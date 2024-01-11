@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddUser, RemoveUser } from "../Utils/Redux/Slices/UserSlice";
 import HeaderAvatar from "./HeaderAvatar";
 import { toggleGptSearch } from "../Utils/Redux/Slices/GptSlice";
-import { FaRobot } from "react-icons/fa6";
+import { BsRobot } from "react-icons/bs";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Header = () => {
       .then(() => {
         toast.success("Logged Out successfully");
         dispatch(RemoveUser());
-
+        dispatch(toggleGptSearch());
         Navigate("/");
       })
       .catch((error) => {
@@ -54,16 +54,30 @@ const Header = () => {
   };
   return (
     <>
-      <div className="w-screen z-10 absolute px-6 bg-gradient-to-b from-black py-2 flex justify-between  ">
+      <div className="w-screen z-10 absolute px-1 md:px-6 bg-gradient-to-b from-black py-2 flex justify-between  ">
         <div className="flex gap-7 items-center  ">
           <Link to="/browse">
-            <img className="w-32" src={logo} alt="logo" />
+            <img className="md:w-32 w-20" src={logo} alt="logo" />
           </Link>
         </div>
 
         {user && (
-          <div className=" flex items-center bg-purple-400 bg-opacity-20 px-2 rounded-md   ">
-            <div className="hover:bg-purple-500 z-50 p-0.5 rounded-full">
+          <div className=" flex items-center   px-2 rounded-md   ">
+            <button
+              id="GptBtn"
+              onClick={HandleGptSearchBtn}
+              className=" md:py-2 py-1 -me-4  md:px-5 ps-2 pe-5 font-semibold  bg-red-600  rounded-[3px]"
+            >
+              {GptState ? (
+                <span className="font-bold">Browse</span>
+              ) : (
+                <section className="flex md:gap-2 gap-1 items-center font-bold  ">
+                  <BsRobot className="text-xl md:text:2xl from-red-500  " />{" "}
+                  <span className="">Gpt </span>{" "}
+                </section>
+              )}
+            </button>
+            <div className=" bg-red-500 z-50 p-0.5 rounded-full">
               <HeaderAvatar
                 email={user?.email}
                 displayName={user?.displayName}
@@ -71,20 +85,6 @@ const Header = () => {
                 HandleSignOut={HandleSignOut}
               />
             </div>
-            <button
-              id="GptBtn"
-              onClick={HandleGptSearchBtn}
-              className=" py-2 -ms-4  px-6 font-semibold  rounded-[3px]"
-            >
-              {GptState ? (
-                "Browse Page"
-              ) : (
-                <section className="flex gap-2 items-center animate-bounce hover:animate-none ">
-                  <FaRobot className="text-2xl from-red-500  " />{" "}
-                  <span className="">Gpt Service</span>{" "}
-                </section>
-              )}
-            </button>
           </div>
         )}
       </div>

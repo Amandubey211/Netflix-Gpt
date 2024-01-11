@@ -5,7 +5,7 @@ import MovieInfoRight from "./MovieInfoRight";
 const MovieInfo = ({ movie }) => {
   return (
     <div className="flex flex-col">
-      <div className=" flex justify-between  flex-wrap md:flex-nowrap gap-2  ">
+      <div className=" flex justify-between  flex-wrap md:flex-nowrap gap-1  ">
         <MovieInfoLeft movie={movie} />
         <MovieInfoRight movie={movie} />
       </div>

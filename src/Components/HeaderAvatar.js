@@ -12,11 +12,11 @@ import {
 const HeaderAvatar = ({ displayName, email, photoURL, HandleSignOut }) => {
   return (
     <div>
-      <Popover  placement="left-end">
+      <Popover>
         <PopoverTrigger>
-          <div className="cursor-pointer rounded-full shadow-2xl ">
+          <div className="cursor-pointer  rounded-full shadow-2xl ">
             <Avatar
-              size="lg"
+              size="md"
               name={displayName ? displayName : "User"}
               src={photoURL}
             />
