@@ -11,8 +11,8 @@ const VideoTitle = ({ title, overview, releasedate, votes, movie }) => {
   }, [overview]);
   return (
     <>
-      <div className="md:pt-[15%] pt-[20%] w-screen aspect-video absolute md:ps-16 ps-5 flex flex-col items-start gap-1 justify-start text-white bg-gradient-to-r from-black">
-        <h3 className="md:text-5xl  text-2xl w-[75%] font-semibold max-h-16">{title}</h3>
+      <div className="md:pt-[15%] pt-[20%] w-screen aspect-video absolute md:ps-16 ps-5 flex flex-col items-start md:gap-1 justify-start text-white bg-gradient-to-r from-black">
+        <h3 className="md:text-5xl  text-xl max-w-[55%] font-semibold max-h-16">{title}</h3>
         <div className=" titleScroll  md:w-1/3 md:block hidden max-h-28    overflow-y-auto  ">
           <span ref={movieOverviewRef}></span>
           <p>{overview}</p>
@@ -27,10 +27,10 @@ const VideoTitle = ({ title, overview, releasedate, votes, movie }) => {
         </div>
 
         <div className="flex gap-2 items-center">
-          <button className="bg-white hover:bg-opacity-20  rounded-md p-1 md:p-3 md:px-10 px-4  border-2 text-black  ">
+          <button className="bg-white hover:bg-opacity-20  rounded-md p-1 md:p-3 md:px-10 px-3  border-2 text-black  ">
             <span className="flex justify-center gap-2 items-center">
-              <FaPlay className="md:text-3xl text-xl  " />
-              <span>Play </span>
+              <FaPlay className="md:text-3xl text-sm  " />
+              <span className="text-sm">Play </span>
             </span>
           </button>
           <MyModal title={title} movie={movie} releasedate={releasedate} />

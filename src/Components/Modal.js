@@ -16,10 +16,13 @@ function MyModal({ title, movie, releasedate }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <button className="md:p-3 p-1  md:px-7 px-3 border-2 rounded-md    " onClick={onOpen}>
+      <button
+        className="md:p-3 p-1  md:px-7 px-3 border-2 rounded-md    "
+        onClick={onOpen}
+      >
         <span className="flex justify-center gap-2 items-center">
-          <LuInfo className="md:text-3xl text-xl " />
-          <span>More Info </span>
+          <LuInfo className="md:text-3xl text-lg " />
+          <span className="text-sm">More Info </span>
         </span>
       </button>
 

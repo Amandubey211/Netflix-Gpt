@@ -15,26 +15,27 @@ const MainContainer = () => {
 
   if (!movies) return;
   const mainMovie = movies[0];
-  const { original_title, overview, release_date, id, vote_average } =
+  const { original_title, title, overview, release_date, id, vote_average } =
     mainMovie;
+  console.log(mainMovie);
   return (
     <div ref={trailerRef}>
       {clickedMovie ? (
         <>
           <VideoTitle
-             movie={clickedMovie}
-            title={clickedMovie?.original_title}
+            movie={clickedMovie}
+            title={clickedMovie?.title}
             overview={clickedMovie?.overview}
             releasedate={clickedMovie?.release_date}
             votes={clickedMovie?.vote_average}
           />
-          <VideoBackground movieId={clickedMovie.id}  />{" "}
+          <VideoBackground movieId={clickedMovie.id} />{" "}
         </>
       ) : (
         <>
           <VideoTitle
-               movie={mainMovie}
-            title={original_title}
+            movie={mainMovie}
+            title={title}
             overview={overview}
             releasedate={release_date}
             votes={vote_average}
