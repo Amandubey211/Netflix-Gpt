@@ -9,6 +9,7 @@ import { AddUser, RemoveUser } from "../Utils/Redux/Slices/UserSlice";
 import HeaderAvatar from "./HeaderAvatar";
 import { toggleGptSearch } from "../Utils/Redux/Slices/GptSlice";
 import { BsRobot } from "react-icons/bs";
+import { GiEarthAfricaEurope } from "react-icons/gi";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -66,10 +67,13 @@ const Header = () => {
             <button
               id="GptBtn"
               onClick={HandleGptSearchBtn}
-              className=" md:py-2 py-1 -me-4  md:px-5 ps-2 pe-5 font-semibold  bg-red-600  rounded-[3px]"
+              className=" md:py-2 py-1 -me-4  md:px-5 ps-1 pe-5 font-semibold  bg-red-600  rounded-[3px]"
             >
               {GptState ? (
-                <span className="font-bold">Browse</span>
+                <section className="flex md:gap-2 gap-1 items-center font-bold  ">
+                  <GiEarthAfricaEurope className="text-xl md:text:2xl from-red-500  " />{" "}
+                  <span className="">Browse </span>{" "}
+                </section>
               ) : (
                 <section className="flex md:gap-2 gap-1 items-center font-bold  ">
                   <BsRobot className="text-xl md:text:2xl from-red-500  " />{" "}
