@@ -41,7 +41,7 @@ const MovieInfoRight = ({ movie }) => {
         {MovieVideos == [] ? (
           <b>No videos found</b>
         ) : (
-          <div className="movieClips px-4 rounded-xl  flex py-2 gap-4 w-72 md:w-[30rem]   overflow-scroll items-center ">
+          <div className="md:movieClips px-4 rounded-xl  flex py-2 gap-4 w-72 md:w-[30rem]   overflow-scroll items-center ">
             {MovieVideos?.slice(0, 5).map((video) => {
               return (
                 <div key={video.id} className="">

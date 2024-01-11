@@ -2,15 +2,7 @@ import React from "react";
 import VideoBackground from "./VideoBackground";
 import { IoStarSharp } from "react-icons/io5";
 const MovieInfoLeft = ({ movie }) => {
-  const {
-    id,
-    genres,
-    adult,
-    production_companies,
-
-    production_countries,
-    vote_average,
-  } = movie;
+  const { id, genres, adult, production_companies, vote_average } = movie;
 
   return (
     <div className="flex flex-col bg-red-100 rounded-2xl  md:p-3 p-2 gap-1     ">
@@ -44,9 +36,14 @@ const MovieInfoLeft = ({ movie }) => {
       </div>
       <div className="p-3 mt-3 bg-red-300 rounded-lg">
         <div className="flex flex-col gap-1 ">
-          <b className="text-1xl">Produced by </b>
+          <div className="flex  gap-2 items-center justify-between">
+            <span className="text-1xl font-bold"> Produced by :</span>
+            {!production_companies && (
+              <span className="bg-red-400 rounded-sm px-4 ">No Data Yet !</span>
+            )}{" "}
+          </div>
           <div className="flex justify-start items-center gap-2 flex-wrap">
-            {production_companies.slice(0, 3)?.map((company) => {
+            {production_companies?.slice(0, 3).map((company) => {
               return (
                 <div key={company.id}>
                   {company.logo_path && (
