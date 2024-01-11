@@ -11,7 +11,7 @@ const MovieInfoLeft = ({ movie }) => {
     production_countries,
     vote_average,
   } = movie;
-  console.log(production_countries);
+
   return (
     <div className="flex flex-col bg-red-100 rounded-2xl  md:p-3 p-2 gap-1     ">
       <div className="trailer rounded-md    ">

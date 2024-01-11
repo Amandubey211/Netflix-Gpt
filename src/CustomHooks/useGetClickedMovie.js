@@ -16,7 +16,6 @@ const useGetClickedMovie = (movieId) => {
       );
 
       const data = await res.json();
-      console.log(data);
       dispatch(addClickedMovies(data?.results));
     } catch {
       toast.error("something went wrong");

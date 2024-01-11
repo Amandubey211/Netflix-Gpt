@@ -16,7 +16,6 @@ const useGetSuggestedMovies = () => {
       ApiOptions
     );
     const data = await res.json();
-    console.log("fetched data from async", data);
     return data;
   };
 
