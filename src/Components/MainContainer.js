@@ -17,7 +17,6 @@ const MainContainer = () => {
   const mainMovie = movies[0];
   const { original_title, title, overview, release_date, id, vote_average } =
     mainMovie;
-  console.log(mainMovie);
   return (
     <div ref={trailerRef}>
       {clickedMovie ? (

@@ -5,6 +5,7 @@ import movieVideosReducer from "../Slices/movieVideosSlice";
 import clickedMovieReducer from "../Slices/clickedMovieSlice";
 import GptSearchReducer from "../Slices/GptSlice";
 import GptSuggestedReducer from "../Slices/GptMoviesSlice";
+import ChacheSearchesReducer from "../Slices/searchSlice";
 
 const AppStore = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const AppStore = configureStore({
     clickedMovie: clickedMovieReducer,
     Gpt: GptSearchReducer,
     GptMovies: GptSuggestedReducer,
+    ChacheSearches: ChacheSearchesReducer,
   },
 });
 

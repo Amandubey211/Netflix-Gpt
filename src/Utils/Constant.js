@@ -27,3 +27,6 @@ export const UpComingMoviesCdnUrl =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
 export const OPEN_AI_GPT_KEY = process.env.REACT_APP_OPEN_AI_GPT_KEY;
+
+export const SearchSuggestionApi =
+  "http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";

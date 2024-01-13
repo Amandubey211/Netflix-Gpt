@@ -6,7 +6,7 @@ import { loginBackground } from "../Utils/Constant";
 const GptSearch = () => {
   return (
     <div className="">
-      <div className="absolute w-screen -z-10">
+      <div className="absolute w-screen object-cover -z-10">
         <img
           src={loginBackground}
           alt="Background"
