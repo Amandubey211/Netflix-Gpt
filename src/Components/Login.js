@@ -106,13 +106,13 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          className=" md:w-screen h-screen object-cover"
+          className=" md:w-screen md:h-full h-screen  object-cover"
           src={loginBackground}
           alt="backgroundImage"
         />
       </div>
 
-      <form className=" md:w-5/12 w-[80%]  rounded-lg bg-opacity-80 bg-black text-white absolute md:px-10 px-5 md:py-6 py-3 md:my-16 my-18 mx-auto right-0 left-0">
+      <form className=" md:w-5/12 w-[80%]  rounded-lg bg-opacity-80 bg-black text-white absolute md:px-10 px-5 md:py-6 py-3   md:my-[6%] my-[20%]  mx-auto right-0 left-0">
         <div className="flex justify-start my-1">
           <h1 className="md:text-3xl text-xl md:py-3 py-1  md:font-bold  font-semibold">
             {signIn ? "Sign In" : "Sign Up"}
